@@ -1,0 +1,227 @@
+@use 'variables' as v;
+@use 'initial';
+@use 'mixins';
+
+
+
+.container {
+    // border: 1px solid red;
+    margin: auto;
+    width: 375px;
+
+    &__background {
+        position: relative;
+        background-image: url('../images/bg-main-mobile.png');
+        background-repeat: no-repeat;
+        height: 240px;
+    }
+
+    &__form-section {
+        // Arriba / lados / abajo
+        padding: 90px 24px 45px;
+
+    }
+
+    @media (min-width : 1440px) {
+        width: 1440px;
+        display: flex;
+
+        &__background {
+            background-image: url('../images/bg-main-desktop.png');
+            height: 900px;
+            width: 900px;
+
+        }
+    }
+
+}
+
+.card-credit-front {
+    @include mixins.card('../images/bg-card-front.png');
+    @include mixins.card-position(126px, 18px, 187px, 167px);
+    z-index: 1;
+    letter-spacing: 2px;
+
+    &__logo {
+        width: 55px;
+        margin-bottom: 30px;
+    }
+
+    &__number {
+        margin-bottom: 15px
+    }
+
+    &__details {
+        display: flex;
+        font-size: 0.6em;
+        justify-content: space-between;
+        text-transform: uppercase
+    }
+
+    @media (min-width : 1440px) {
+        &__logo {
+            width: 86px;
+            margin-bottom: 55px;
+        }
+
+        &__number {
+            font-size: 1.6em;
+            margin-bottom: 25px
+        }
+
+        &__details {
+            display: flex;
+            font-size: 0.8em;
+            justify-content: space-between;
+            text-transform: uppercase
+        }
+    }
+}
+
+.card-credit-back {
+    @include mixins.card('../images/bg-card-back.png');
+    @include mixins.card-position(30px, 75px, 468px, 257px);
+    letter-spacing: 2px;
+
+    &__cvc {
+        margin-top: 50px;
+        text-align: right;
+        padding-right: 10px;
+        font-size: 0.7em;
+
+        @media (min-width : 1440px) {
+            font-size: 1em;
+            margin-top: 80px;
+            padding-right: 30px;
+        }
+    }
+}
+
+.form {
+
+
+    &__label {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.65em;
+        display: block;
+        margin-bottom: 8px;
+        color: v.$Very-dark-violet;
+        font-weight: bold;
+    }
+
+    &__input {
+        border: 1px solid v.$Light-grayish-violet;
+        width: 100%;
+        height: 40px;
+        border-radius: 4px;
+        margin-bottom: 18px;
+        font-family: v.$font;
+        padding-left: 10px;
+        font-size: 1em;
+        outline: none;
+
+        &::placeholder {
+            color: v.$Light-grayish-violet;
+        }
+    }
+
+    &__date-cvc {
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0px 16px;
+    }
+
+    &__date {
+        display: flex;
+        gap: 10px;
+    }
+
+    &__submit {
+        background-color: v.$Very-dark-violet;
+        color: v.$Light-grayish-violet;
+        width: 100%;
+        border-radius: 8px;
+        height: 50px;
+        font-size: 1em;
+        letter-spacing: 1px;
+        font-family: v.$font;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    @media (min-width : 1440px) {
+        width: 385px;
+        margin-top: 180px;
+
+        &__input {
+            margin-bottom: 40px;
+        }
+    }
+}
+
+.error {
+    color: v.$Red;
+    // Arriba lados Abajo
+    margin: -10px 0 18px;
+    font-size: .6em;
+
+    @media (min-width : 1440px) {
+        margin: -40px 0 18px;
+    }
+}
+
+.form__errors-container {
+    display: flex;
+    gap: 5px;
+
+    & div {
+        width: 100px;
+        text-align: center;
+    }
+
+}
+
+.thanks-section {
+    display: none;
+    text-align: center;
+    margin-bottom: 60px;
+
+    &__img {
+        margin-bottom: 30px;
+    }
+
+    &__title {
+        text-transform: uppercase;
+        font-weight: 400;
+        letter-spacing: 4px;
+        color: v.$Very-dark-violet;
+        margin-bottom: 24px;
+    }
+
+    &__text {
+        color: v.$Dark-grayish-violet;
+        font-size: 1.1em;
+        margin-bottom: 24px;
+    }
+
+    &__button {
+        @extend .form__submit;
+    }
+
+    @media (min-width:1440px) {
+        margin-top: 180px;
+    }
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
